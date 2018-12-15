@@ -1,0 +1,16 @@
+all: run
+
+build:
+	go build
+
+run: build
+	./part{PART} < ../input.txt
+
+test: build
+	./part{PART} < ../testInput.txt
+
+watch:
+	ag -l . ../ | entr make run
+
+watch-test:
+	ag -l . ../ | entr make test
