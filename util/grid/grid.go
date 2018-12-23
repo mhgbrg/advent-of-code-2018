@@ -30,6 +30,28 @@ func (pos Position) String() string {
 	return fmt.Sprintf("(%d, %d)", pos.X, pos.Y)
 }
 
+func (pos Position) Around1() []Position {
+	return []Position{
+		Position{pos.X, pos.Y - 1},
+		Position{pos.X - 1, pos.Y},
+		Position{pos.X + 1, pos.Y},
+		Position{pos.X, pos.Y + 1},
+	}
+}
+
+func (pos Position) Around2() []Position {
+	return []Position{
+		Position{pos.X - 1, pos.Y - 1},
+		Position{pos.X, pos.Y - 1},
+		Position{pos.X + 1, pos.Y - 1},
+		Position{pos.X - 1, pos.Y},
+		Position{pos.X + 1, pos.Y},
+		Position{pos.X - 1, pos.Y + 1},
+		Position{pos.X, pos.Y + 1},
+		Position{pos.X + 1, pos.Y + 1},
+	}
+}
+
 type Limits struct {
 	XMin int
 	XMax int
