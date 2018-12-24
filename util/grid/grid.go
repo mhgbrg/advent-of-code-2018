@@ -10,6 +10,10 @@ type Position struct {
 	Y int
 }
 
+func Origo() Position {
+	return Position{0, 0}
+}
+
 func (pos Position) Above() Position {
 	return Position{pos.X, pos.Y - 1}
 }
