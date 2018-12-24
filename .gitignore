@@ -1,6 +1,4 @@
-*
-!/**/
-!*.*
-!Makefile
-!TemplateMakefile
-.DS_Store
+part1
+part2
+!part1/
+!part2/
