@@ -129,7 +129,7 @@ func filterByOverlapCount(bots []nanobot, count int) []nanobot {
 	filteredBots := make([]nanobot, 0)
 	for _, bot := range bots {
 		overlapsCount := countOverlaps(bot, bots)
-		if overlapsCount >= count /* 4 */ {
+		if overlapsCount >= count {
 			filteredBots = append(filteredBots, bot)
 		}
 	}
