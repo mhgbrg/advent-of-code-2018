@@ -36,3 +36,12 @@ func Eq(slice1 []int, slice2 []int) bool {
 	}
 	return true
 }
+
+func StrContains(slice []string, str string) bool {
+	for _, elem := range slice {
+		if elem == str {
+			return true
+		}
+	}
+	return false
+}
