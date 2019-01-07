@@ -14,18 +14,17 @@ func main() {
 	start := time.Now()
 
 	area := readInput()
-	printArea(area)
 
 	minutes := 1000000000
 
 	term.ClearScreen()
 	term.Goto(0, 0)
-	fmt.Println(0)
 	printArea(area)
 	time.Sleep(200 * time.Millisecond)
 
 	areas := make(map[string]int, 0)
 
+	foundLoop := false
 	for i := 1; i <= minutes; i++ {
 		area = mutateArea(area)
 		result := calculateResult(area)
@@ -34,14 +33,17 @@ func main() {
 		printArea(area)
 		fmt.Println("minute", i, "result", result)
 
-		areaStr := areaToString(area)
-		if j, ok := areas[areaStr]; ok {
-			loopLength := i - j
-			minutesLeft := minutes - i
-			iterationsLeft := minutes - ((minutesLeft/loopLength)*loopLength + i)
-			minutes = i + iterationsLeft
+		if !foundLoop {
+			areaStr := areaToString(area)
+			if j, ok := areas[areaStr]; ok {
+				loopLength := i - j
+				minutesLeft := minutes - i
+				iterationsLeft := minutes - ((minutesLeft/loopLength)*loopLength + i)
+				minutes = i + iterationsLeft
+				foundLoop = true
+			}
+			areas[areaStr] = i
 		}
-		areas[areaStr] = i
 
 		// time.Sleep(100 * time.Millisecond)
 	}
